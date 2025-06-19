@@ -4,8 +4,8 @@ from sklearn.model_selection import train_test_split
 #import de raw.csv
 raw_data = pd.read_csv('data/raw_data/raw.csv')
 
-#séparation de la variable cible et des variables explicatives
-X = raw_data.drop(columns=['silica_concentrate'])
+#séparation de la variable cible et des variables explicatives et supression de la date
+X = raw_data.drop(columns=['silica_concentrate','date'])
 y = raw_data['silica_concentrate']
 
 #séparation en train et test
