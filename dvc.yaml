@@ -42,6 +42,7 @@ stages:
     - models/RandomForestRegressor_model.pkl
     - src/models/model_eval.py
     outs:
-    - metrics/evaluation_results.json
     - data/processed_data/predictions.csv
+    metrics:
+    - metrics/evaluation_results.json
     
