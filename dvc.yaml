@@ -1,0 +1,47 @@
+
+stages:
+  split:
+    cmd: python src/data/preproc_split.py
+    deps:
+    - data/raw_data
+    - src/data/preproc_split.py
+    outs:
+    - data/processed_data/X_train.csv
+    - data/processed_data/X_test.csv
+    - data/processed_data/y_train.csv
+    - data/processed_data/y_test.csv
+  normalize:
+    cmd: python src/data/preproc_norm.py
+    deps:
+    - data/processed_data/X_train.csv
+    - data/processed_data/X_test.csv
+    - src/data/preproc_norm.py
+    outs:
+    - data/processed_data/X_train_scaled.csv
+    - data/processed_data/X_test_scaled.csv
+  gridsearch:
+    cmd: python src/model/grid_search.py
+    deps:
+    - data/processed_data/X_train_scaled.csv
+    - data/processed_data/y_train.csv
+    - src/model/grid_search.py
+    outs:
+    - models/best_params_RFReg.pkl
+  train:
+    cmd: python src/model/train.py
+    deps:
+    - models/best_params_RFReg.pkl
+    - data/processed_data/X_train_scaled.csv
+    - data/processed_data/y_train.csv
+    - src/models/model_train.py
+    outs:
+    - models/RandomForestRegressor_model.pkl
+  evaluate:
+    cmd: python src/model/evaluate.py
+    deps:
+    - models/RandomForestRegressor_model.pkl
+    - src/models/model_eval.py
+    outs:
+    - metrics/evaluation_metrics.json
+    - data/processed_data/redictions.csv
+    
