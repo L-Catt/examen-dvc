@@ -1,0 +1,5 @@
+outs:
+- md5: 81de9760525f35dcf7bef21c7c555f54
+  size: 3638897
+  hash: md5
+  path: RandomForestRegressor_model.pkl
