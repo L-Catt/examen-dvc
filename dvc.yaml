@@ -3,7 +3,7 @@ stages:
   split:
     cmd: python src/data/preproc_split.py
     deps:
-    - data/raw_data
+    - data/raw_data/raw.csv
     - src/data/preproc_split.py
     outs:
     - data/processed_data/X_train.csv
