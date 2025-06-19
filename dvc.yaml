@@ -4,7 +4,6 @@ stages:
     cmd: python src/data/preproc_split.py
     deps:
     - src/data/preproc_split.py
-    process_external_data:
     - data/raw_data/raw.csv 
     outs:
     - data/processed_data/X_train.csv
