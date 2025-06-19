@@ -23,3 +23,6 @@ results = {
 with open('metrics/evaluation_results.json', 'w') as f:
     import json         
     json.dump(results, f, indent=4)
+# Sauvegarde des prédictions dans un fichier csv
+predictions_df = pd.DataFrame({'Actual': y_test.values.ravel(), 'Predicted': y_pred})
+predictions_df.to_csv('data/processed_data/predictions.csv', index=False)
